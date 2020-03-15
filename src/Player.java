@@ -46,6 +46,7 @@ public class Player {
     public Player getOtherPlayer() {
         return this.otherPlayer;
     }
+
     public void changeTurn(){
         this.hasTurn = !this.getHasTurn();
         this.getOtherPlayer().hasTurn = !this.getOtherPlayer().getHasTurn();
