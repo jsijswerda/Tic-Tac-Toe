@@ -43,15 +43,20 @@ public class TTT {
     private void doTurn(Player currentPlayer) {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println(currentPlayer.getName() + ", choose row (1-3)");
-        int xPos = scan.nextInt()-1;
-        System.out.println(currentPlayer.getName() + ", choose column (1-3)");
-        int yPos = scan.nextInt()-1;
-        if (board[xPos][yPos].equals("-")){
-            board[xPos][yPos] = currentPlayer.getMark();
+        try {
+            System.out.println(currentPlayer.getName() + ", choose row (1-3)");
+            int xPos = scan.nextInt() - 1;
+            System.out.println(currentPlayer.getName() + ", choose column (1-3)");
+            int yPos = scan.nextInt() - 1;
+            if (board[xPos][yPos].equals("-")) {
+                board[xPos][yPos] = currentPlayer.getMark();
+            } else {
+                System.out.println("Position taken. Try again please.");
+                doTurn(currentPlayer);
+            }
         }
-        else{
-            System.out.println("Position taken. Try again.");
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Invalid entry. Try again please.");
             doTurn(currentPlayer);
         }
     }
