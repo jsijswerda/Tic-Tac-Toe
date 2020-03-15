@@ -14,8 +14,6 @@ public class TTT {
         game.initializePlayers();
         game.printBoard();
 
-
-
         while (!game.weHaveAWinner() && !game.isBoardFull()) {
             Player currentPlayer = game.findCurrentPlayer();
             if (currentPlayer != null) {
@@ -26,9 +24,7 @@ public class TTT {
                 }
             }
         }
-
         game.endGame();
-
     }
 
     private Player findCurrentPlayer() {
@@ -50,7 +46,8 @@ public class TTT {
             int yPos = scan.nextInt() - 1;
             if (board[xPos][yPos].equals("-")) {
                 board[xPos][yPos] = currentPlayer.getMark();
-            } else {
+            }
+            else {
                 System.out.println("Position taken. Try again please.");
                 doTurn(currentPlayer);
             }
@@ -129,7 +126,7 @@ public class TTT {
     }
 
     private boolean checkRowCol(String c1, String c2, String c3){
-        return ((!c1.equals("-")) && (c1.equals(c2)) && (c2.equals(c3)));
+        return (!c1.equals("-")) && (c1.equals(c2)) && (c2.equals(c3));
     }
 
     private boolean isBoardFull() {
