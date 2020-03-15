@@ -27,3 +27,8 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+## java
+*.class
+
+*/META-INF/*
