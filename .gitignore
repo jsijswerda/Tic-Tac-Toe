@@ -32,3 +32,5 @@ HELP.md
 *.class
 
 */META-INF/*
+*/out
+*/production

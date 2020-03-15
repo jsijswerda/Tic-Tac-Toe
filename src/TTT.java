@@ -44,11 +44,11 @@ public class TTT {
 
         Scanner scan = new Scanner(System.in);
         System.out.println(currentPlayer.getName() + ", choose row (1-3)");
-        int yPos = scan.nextInt()-1;
-        System.out.println(currentPlayer.getName() + ", choose column (1-3)");
         int xPos = scan.nextInt()-1;
+        System.out.println(currentPlayer.getName() + ", choose column (1-3)");
+        int yPos = scan.nextInt()-1;
         if (board[xPos][yPos].equals("-")){
-            board[yPos][xPos] = currentPlayer.getMark();
+            board[xPos][yPos] = currentPlayer.getMark();
         }
         else{
             System.out.println("Position taken. Try again.");
