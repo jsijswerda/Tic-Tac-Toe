@@ -31,6 +31,5 @@ HELP.md
 ## java
 *.class
 
-*/META-INF/*
-*/out
-*/production
+/out/*
+/production/*
