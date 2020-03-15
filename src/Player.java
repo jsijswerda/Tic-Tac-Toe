@@ -27,27 +27,25 @@ public class Player {
         }
     }
 
-
     public String getMark(){
-        return mark;
+        return this.mark;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     void setOtherPlayer(Player player) {
         this.otherPlayer = player;
 
     }
-    public Boolean getHasTurn() {
-        return hasTurn;
+    public boolean getHasTurn() {
+        return this.hasTurn;
     }
 
     public Player getOtherPlayer() {
-        return otherPlayer;
+        return this.otherPlayer;
     }
-
     public void changeTurn(){
         this.hasTurn = !this.getHasTurn();
         this.getOtherPlayer().hasTurn = !this.getOtherPlayer().getHasTurn();
