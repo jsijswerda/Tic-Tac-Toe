@@ -64,23 +64,33 @@ public class TTT {
     }
 
     protected void initializePlayers() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Player 1, what is your name?");
-        String p1Name = scanner.next();
-        String p1Mark = "";
-        while (!p1Mark.equalsIgnoreCase("X") && !p1Mark.equalsIgnoreCase("O")){
-            System.out.print(p1Name + ", what mark do you wish to play with? (X or O)");
-            p1Mark = scanner.next();
-        }
-        System.out.println("Player 2, what is your name?");
-        String p2Name = scanner.next();
+
+        String p1Name = createNewPlayer();
+        String p1Mark = createMarkForPlayer(p1Name);
+        String p2Name = createNewPlayer();
         Player player1 = new Player(p1Name, p1Mark, true);
         Player player2 = new Player(p2Name, player1, false);
+        System.out.println(player2.getName() + ", you play with " + player2.getMark()+ ".");
+        player1.setOtherPlayer(player2);
         players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
-        System.out.println(player2.getName() + ", you play with " + player2.getMark()+ ".");
-        player1.setOtherPlayer(player2);
+    }
+
+    private String createMarkForPlayer(String player) {
+        Scanner scanner = new Scanner(System.in);
+        String p1Mark = "";
+        while (!p1Mark.equalsIgnoreCase("X") && !p1Mark.equalsIgnoreCase("O")){
+            System.out.print(player + ", what mark do you wish to play with? (X or O)");
+            p1Mark = scanner.next();
+        }
+        return p1Mark;
+    }
+
+    private String createNewPlayer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Player 1, what is your name?");
+        return scanner.next();
     }
 
     protected void initializeBoard() {
