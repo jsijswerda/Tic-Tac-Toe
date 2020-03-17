@@ -29,6 +29,10 @@ public class TTT {
         game.endGame();
     }
 
+    public String [][] getBoard(){
+        return board;
+    }
+
     private Player findCurrentPlayer() {
         for (Player player : players){
             if (player.getHasTurn()){
@@ -38,8 +42,7 @@ public class TTT {
         return null;
     }
 
-    private void doTurn(Player currentPlayer) {
-
+    protected void doTurn(Player currentPlayer) {
         Scanner scan = new Scanner(System.in);
         try {
             System.out.println(currentPlayer.getName() + ", choose row (1-3)");
@@ -60,7 +63,7 @@ public class TTT {
         }
     }
 
-    private void initializePlayers() {
+    protected void initializePlayers() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Player 1, what is your name?");
         String p1Name = scanner.next();
@@ -80,7 +83,7 @@ public class TTT {
         player1.setOtherPlayer(player2);
     }
 
-    private void initializeBoard() {
+    protected void initializeBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 board[i][j] = "-";
@@ -88,7 +91,7 @@ public class TTT {
         }
     }
 
-    private void printBoard() {
+    protected void printBoard() {
         System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
             System.out.print("| ");

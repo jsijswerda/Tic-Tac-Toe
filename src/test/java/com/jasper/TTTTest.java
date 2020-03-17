@@ -1,20 +1,27 @@
 package com.jasper;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 public class TTTTest
 {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void initializeBoard()    {
+        TTT game = new TTT();
+        game.initializeBoard();
+        assertNotNull(game);
+        assertEquals( "-", game.getBoard()[0][0] );
+        assertEquals( "-", game.getBoard()[2][2] );
+    }
+
+    @Test
+    public void initializePlayers(){
+        TTT game = new TTT();
+        game.initializeBoard();
+       // game.initializePlayers();
+
     }
 }

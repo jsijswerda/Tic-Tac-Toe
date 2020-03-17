@@ -49,7 +49,7 @@ public class Player {
         return this.otherPlayer;
     }
 
-    public void changeTurn(){
+    void changeTurn(){
         this.hasTurn = !this.getHasTurn();
         this.getOtherPlayer().hasTurn = !this.getOtherPlayer().getHasTurn();
     }
