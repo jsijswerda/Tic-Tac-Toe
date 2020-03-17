@@ -28,6 +28,7 @@ public class TTTTest
     @Test
     public void isWinner(){
         TTT game = new TTT();
+        game.initializeBoard();
         Player john = new Player("John","O",true);
         Player mary = new Player("Mary",john,false);
         john.setOtherPlayer(mary);

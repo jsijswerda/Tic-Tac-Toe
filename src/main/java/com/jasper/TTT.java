@@ -66,15 +66,20 @@ public class TTT {
     protected void initializePlayers() {
 
         String p1Name = createNewPlayer();
-        String p1Mark = createMarkForPlayer(p1Name);
         String p2Name = createNewPlayer();
+        String p1Mark = createMarkForPlayer(p1Name);
         Player player1 = new Player(p1Name, p1Mark, true);
         Player player2 = new Player(p2Name, player1, false);
         System.out.println(player2.getName() + ", you play with " + player2.getMark()+ ".");
         player1.setOtherPlayer(player2);
+        addPlayersToGame(player1,player2);
+    }
+
+    private void addPlayersToGame(Player player1, Player player2) {
         players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
+
     }
 
     private String createMarkForPlayer(String player) {
@@ -154,6 +159,7 @@ public class TTT {
         }
         return true;
     }
+    
     private void endGame() {
         if (weHaveAWinner()){
             Player currentPlayer = findCurrentPlayer();
