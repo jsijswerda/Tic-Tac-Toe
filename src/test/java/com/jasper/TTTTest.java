@@ -41,13 +41,5 @@ public class TTTTest {
         System.setIn(in);
         assertEquals("Pete", game.createNewPlayer());
     }
-
-
-    public void makePlayers(){
-        TTT game = new TTT();
-        game.initializeBoard();
-        game.initializePlayers();
-
-    }
 }
 
