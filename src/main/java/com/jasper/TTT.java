@@ -1,5 +1,6 @@
 package com.jasper;
 
+import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,14 +43,14 @@ public class TTT {
         return null;
     }
 
-    protected void doTurn(Player currentPlayer) {
+    protected void doTurn(@NotNull Player currentPlayer) {
         Scanner scan = new Scanner(System.in);
         try {
             System.out.println(currentPlayer.getName() + ", choose row (1-3)");
             int xPos = scan.nextInt() - 1;
             System.out.println(currentPlayer.getName() + ", choose column (1-3)");
             int yPos = scan.nextInt() - 1;
-            if (board[xPos][yPos].equals("-")) {
+            if ("-".equals(board[xPos][yPos])) {
                 board[xPos][yPos] = currentPlayer.getMark();
             }
             else {
@@ -72,7 +73,7 @@ public class TTT {
         Player player2 = new Player(p2Name, player1, false);
         System.out.println(player2.getName() + ", you play with " + player2.getMark()+ ".");
         player1.setOtherPlayer(player2);
-        addPlayersToGame(player1,player2);
+        addPlayersToGame(player1, player2);
     }
 
     private void addPlayersToGame(Player player1, Player player2) {
@@ -85,16 +86,16 @@ public class TTT {
     private String createMarkForPlayer(String player) {
         Scanner scanner = new Scanner(System.in);
         String p1Mark = "";
-        while (!p1Mark.equalsIgnoreCase("X") && !p1Mark.equalsIgnoreCase("O")){
+        while (!"X".equalsIgnoreCase(p1Mark) && !"O".equalsIgnoreCase(p1Mark)){
             System.out.print(player + ", what mark do you wish to play with? (X or O)");
             p1Mark = scanner.next();
         }
         return p1Mark;
     }
 
-    private String createNewPlayer() {
+    protected String createNewPlayer() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Player 1, what is your name?");
+        System.out.println("Player, what is your name?");
         return scanner.next();
     }
 
@@ -146,20 +147,20 @@ public class TTT {
     }
 
     private boolean checkRowCol(String c1, String c2, String c3){
-        return (!c1.equals("-")) && (c1.equals(c2)) && (c2.equals(c3));
+        return (!"-".equals(c1)) && (c1.equals(c2)) && (c2.equals(c3));
     }
 
     private boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board[i][j].equals("-")) {
+                if ("-".equals(board[i][j])) {
                     return false;
                 }
             }
         }
         return true;
     }
-    
+
     private void endGame() {
         if (weHaveAWinner()){
             Player currentPlayer = findCurrentPlayer();

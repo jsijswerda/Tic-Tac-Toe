@@ -1,20 +1,16 @@
 package com.jasper;
 
-import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class TTTTest
-{
-
-    @Before
-    public void setup(){
-
-    }
-
-
+public class TTTTest {
 
     @Test
     public void initializeBoard()    {
@@ -25,13 +21,33 @@ public class TTTTest
         assertEquals( "-", game.getBoard()[2][2]);
     }
 
+//    @Test
+//    public void initPlayers(){
+//        TTT game = new TTT();
+//        game.initializeBoard();
+//
+//        Scanner mockScanner = mock(Scanner.class);
+//        when(mockScanner.nextLine()).thenReturn("Pete");
+//        when(mockScanner.nextLine()).thenReturn("John");
+//        when(mockScanner.nextLine()).thenReturn("X");
+//        game.initializePlayers();
+//    }
+
     @Test
-    public void isWinner(){
+    public void testPlayer(){
+        TTT game = new TTT();
+        String playerName = "Pete";
+        InputStream in = new ByteArrayInputStream(playerName.getBytes());
+        System.setIn(in);
+        assertEquals("Pete", game.createNewPlayer());
+    }
+
+
+    public void makePlayers(){
         TTT game = new TTT();
         game.initializeBoard();
-        Player john = new Player("John","O",true);
-        Player mary = new Player("Mary",john,false);
-        john.setOtherPlayer(mary);
+        game.initializePlayers();
 
     }
 }
+
